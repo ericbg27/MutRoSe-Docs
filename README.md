@@ -6,7 +6,7 @@ This repository contains two higher level folders:
 
  - Docs: This is the folder that contains documents with instructions on the mission specification part of the framework
  - Examples: This folder contains several examples of missions models
- - 
+ 
 ## Instruction Video
 You can find an example-based explanation video [here](https://youtu.be/rXl_m7FJgOo).
 
@@ -148,7 +148,7 @@ In both versions there are two optional command-line options that can be used:
 
  - -v: This will generate a verbose output which shows intermeadiate results. This output is most suitable for debugging when adding a new feature
  - -p: This will generate a pretty-printed output of the valid mission decompositions. This output is most suitable for checking the obtained results of the decomposition when simply using the binary to decompose some mission
- - -h: This will generate iHTNs for the valid mission decompositions. Note that this is experimental work and may not work under certain examples!
+ - -h: This will generate iHTNs [6] for the valid mission decompositions. Note that this is experimental work and may not work under certain examples!
 
 ## Mantainers
 Eric Gil - github.com/ericbg27
@@ -164,3 +164,5 @@ Eric Gil - github.com/ericbg27
 [4] OCL, OMG. Object Constraint Language (OCL), Version 2.4. 2014.
 
 [5] Torreño, Alejandro, et al. "Cooperative multi-agent planning: A survey." _ACM Computing Surveys (CSUR)_ 50.6 (2017): 1-32.
+
+[6] Lesire, Charles, et al. "A distributed architecture for supervision of autonomous multi-robot missions." Autonomous Robots 40.7 (2016): 1343-1362.
