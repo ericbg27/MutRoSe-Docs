@@ -1,0 +1,70 @@
+{
+    "world_db": {
+        "type": "file",
+        "file_type": "xml",
+        "path": "knowledge/world_db.xml",
+        "xml_root": "world_db"
+    },
+
+    "output": {
+        "output_type": "file",
+        "file_path": "output/task_output_RegularCheckUps.json",
+        "file_type": "json"
+    },
+
+    "location_types": ["Room"],
+
+    "type_mapping": [
+        {
+            "hddl_type": "room",
+            "ocl_type": "Room"
+        },
+        {
+            "hddl_type": "patient",
+            "ocl_type": "Patient"
+        }
+    ],
+
+    "var_mapping": [
+        {
+            "task_id": "AT1",
+            "map": [
+                {
+                    "gm_var": "patient_room",
+                    "hddl_var": "?rm"
+                },
+                {
+                    "gm_var": "current_patient",
+                    "hddl_var": "?p"
+                }
+            ]
+        }
+    ],
+
+    "semantic_mapping": [
+        {
+            "type": "attribute",
+            "name": "needs_checking",
+            "relates_to": "Patient",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "needschecking",
+                "arg_sorts": ["patient"]
+            }
+        },
+        {
+            "type": "relationship",
+            "main_entity": "Patient",
+            "related_entity": "Room",
+            "relationship_type": "attribute",
+            "attribute_name": "room",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "at",
+                "arg_sorts": ["room", "patient"]
+            }
+        }
+    ]
+}

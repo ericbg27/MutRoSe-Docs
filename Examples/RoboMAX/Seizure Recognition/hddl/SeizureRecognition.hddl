@@ -1,0 +1,90 @@
+(define (domain hospital)
+	(:types room - object)
+	(:predicates
+		(helpneeded ?rm - room)
+	)
+	(:capabilities)
+
+	(:task EnterRoom :parameters (?r - robot ?rm - room))
+	(:method room-enter
+		:parameters (?r - robot ?rm - room)
+		:task (EnterRoom ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(enter-room ?r ?rm)
+		)
+	)
+	(:action enter-room
+		:parameters (?r - robot ?rm - room)
+	)
+
+	(:task FindEquipment :parameters (?r - robot ?srm - room))
+	(:method equipment-find
+		:parameters (?r - robot ?srm - room)
+		:task (FindEquipment ?r ?srm)
+		:precondition ()
+		:ordered-subtasks (and
+			(find-equipment ?r ?srm)
+		)
+	)
+	(:action find-equipment
+		:parameters (?r - robot ?srm - room)
+	)
+
+	(:task ObservePatient :parameters (?r - robot ?rm - room))
+	(:method patient-observation
+		:parameters (?r - robot ?rm - room)
+		:task (ObservePatient ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(observe-patient ?r ?rm)
+		)
+	)
+	(:action observe-patient
+		:parameters (?r - robot ?rm - room)
+	)
+
+	(:task InteractWithPatient :parameters (?r - robot ?rm - room))
+	(:method patient-interaction
+		:parameters (?r - robot ?rm - room)
+		:task (InteractWithPatient ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(interact-with-patient ?r ?rm)
+		)
+	)
+	(:action interact-with-patient
+		:parameters (?r - robot ?rm - room)
+	)
+
+	(:task ApplyTestSequence :parameters (?r - robot ?rm - room))
+	(:method test-sequence-application
+		:parameters (?r - robot ?rm - room)
+		:task (ApplyTestSequence ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(apply-test-sequence ?r ?rm)
+			(alert-nurses ?r ?rm)
+		)
+	)
+
+	(:action apply-test-sequence
+		:parameters (?r - robot ?rm - room)
+	)
+	(:action alert-nurses
+		:parameters (?r - robot ?rm - room)
+	)
+
+	(:task AlertManager :parameters (?r - robot ?rm - room))
+	(:method manager-alert
+		:parameters (?r - robot ?rm - room)
+		:task (AlertManager ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(alert-manager ?r ?rm)
+		)
+	)
+	(:action alert-manager
+		:parameters (?r - robot ?rm - room)
+	)
+)

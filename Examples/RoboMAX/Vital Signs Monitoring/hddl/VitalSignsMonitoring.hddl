@@ -1,0 +1,173 @@
+(define (domain hospital)
+	(:types patient room - object)
+	(:predicates
+		(occupied ?rm - room)
+		(infectiousdisease ?p - patient)
+		(diabetes ?p - patient)
+		(postsurgical ?p - patient)
+		(available ?p - patient)
+		(at ?p - patient ?rm - room)
+		(checked ?p - patient)
+	)
+	(:capabilities check-heart-rate check-blood-pressure check-blood-oxigenation check-body-temperature check-glucose )
+
+	(:task EnterRoom :parameters (?r - robot ?rm - room))
+	(:method room-enter
+		:parameters (?r - robot ?rm - room)
+		:task (EnterRoom ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(enter-room ?r ?rm)
+		)
+	)
+	(:action enter-room
+		:parameters (?r - robot ?rm - room)
+	)
+
+	(:task ApproachPatient :parameters (?r - robot ?rm - room ?p - patient))
+	(:method available-patient-approach
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (ApproachPatient ?r ?rm ?p)
+		:precondition (and
+			(available ?p)
+		)
+		:ordered-subtasks (and
+			(approach-patient ?r ?rm ?p)
+		)
+	)
+	(:method unavailable-patient-approach
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (ApproachPatient ?r ?rm ?p)
+		:precondition (and
+			(not (available ?p))
+		)
+		:ordered-subtasks (and
+			(comeback-later ?r ?rm ?p)
+			(approach-patient ?r ?rm ?p)
+		)
+	)
+
+	(:action approach-patient
+		:parameters (?r - robot ?rm - room ?p - patient)
+	)
+	(:action comeback-later
+		:parameters (?r - robot ?rm - room ?p - patient)
+	)
+
+	(:task ProvideInstructions :parameters (?r - robot ?rm - room ?p - patient))
+	(:method instructions-providing
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (ProvideInstructions ?r ?rm ?p)
+		:ordered-subtasks (and
+			(provide-instructions ?r ?rm ?p)
+		)
+	)
+	(:action provide-instructions
+		:parameters (?r - robot ?rm - room ?p - patient)
+	)
+
+	(:task CollectVitalSigns :parameters (?r - robot ?rm - room ?p - patient))
+	(:method infections-disease-checking
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (CollectVitalSigns ?r ?rm ?p)
+		:precondition (and
+			(infectiousdisease ?p)
+		)
+		:ordered-subtasks(and
+			(infectious-disease-collect ?r ?rm ?p)
+			(mark-as-done ?r ?rm ?p)
+		)
+	)
+	(:method diabetes-checking
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (CollectVitalSigns ?r ?rm ?p)
+		:precondition (and
+			(diabetes ?p)
+		)
+		:ordered-subtasks(and
+			(diabetes-collect ?r ?rm ?p)
+			(mark-as-done ?r ?rm ?p)
+		)
+	)
+	(:method post-surgical-checking
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (CollectVitalSigns ?r ?rm ?p)
+		:precondition (and
+			(postsurgical ?p)
+		)
+		:ordered-subtasks(and
+			(post-surgical-collect ?r ?rm ?p)
+			(mark-as-done ?r ?rm ?p)
+		)
+	)
+
+	(:action infectious-disease-collect
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:required-capabilities (check-heart-rate check-blood-pressure check-blood-oxigenation check-body-temperature)
+	)
+	(:action diabetes-collect
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:required-capabilities (check-glucose)
+	)
+	(:action post-surgical-collect
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:required-capabilities (check-heart-rate check-blood-oxigenation)
+	)
+	(:action mark-as-done
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:effect (and
+			(checked ?p)
+		)
+	)
+
+	(:task AssessPatientStatus :parameters (?r - robot ?rm - room ?p - patient))
+	(:method patient-assessing
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (AssessPatientStatus ?r ?rm ?p)
+		:ordered-subtasks (and
+			(assess-patient ?r ?rm ?p)
+		)
+	)
+	(:action assess-patient
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:effect (and
+			(checked ?p)
+		)
+	)
+
+	(:task SendAlert :parameters (?r - robot ?rm - room ?p - patient))
+	(:method alert-sending
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (SendAlert ?r ?rm ?p)
+		:ordered-subtasks (and
+			(send-alert ?r ?rm ?p)
+		)
+	)
+	(:action send-alert
+		:parameters (?r - robot ?rm - room ?p - patient)
+	)
+
+	(:task RobotSanitization :parameters (?r - robot ?srm - room))
+	(:method robot-sanitization
+		:parameters (?r - robot ?srm - room)
+		:task (RobotSanitization ?r ?srm)
+		:ordered-subtasks (and
+			(sanitize-robot ?r ?srm)
+		)
+	)
+	(:action sanitize-robot
+		:parameters (?r - robot ?srm - room)
+	)
+
+	(:task RechargeBattery :parameters (?r - robot))
+	(:method recharge-battery
+		:parameters (?r - robot)
+		:task (RechargeBattery ?r)
+		:ordered-subtasks (and
+			(robot-recharge ?r)
+		)
+	)
+	(:action robot-recharge
+		:parameters (?r - robot)
+	)
+)

@@ -1,0 +1,89 @@
+{
+    "actions": [
+        {
+            "name": "check-patient",
+            "capabilities": "patient-checking"
+        }
+    ],
+    "tasks": {
+        "t0": {
+            "id": "AT1_1|1",
+            "name": "CheckPatient",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room",
+                "?p": "patient"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB",
+                "?p": "Patient1"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": [
+                {
+                    "predicate": "not Patient1.needs_checking",
+                    "vars": "Patient1",
+                    "var_types": "patient"
+                }
+            ],
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "check-patient",
+                    "arguments": "?r ?rm ?p"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t1": {
+            "id": "AT1_2|1",
+            "name": "CheckPatient",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room",
+                "?p": "patient"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA",
+                "?p": "Patient2"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": [
+                {
+                    "predicate": "not Patient2.needs_checking",
+                    "vars": "Patient2",
+                    "var_types": "patient"
+                }
+            ],
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "check-patient",
+                    "arguments": "?r ?rm ?p"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        }
+    },
+    "constraints": "",
+    "mission_decompositions": [
+        [
+            "t0",
+            "t1"
+        ]
+    ]
+}

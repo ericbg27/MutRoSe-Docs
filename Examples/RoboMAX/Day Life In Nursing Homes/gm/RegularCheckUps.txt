@@ -1,0 +1,153 @@
+{
+  "actors": [
+    {
+      "id": "6752ceda-a3da-4d48-8ff2-04704e6a32d5",
+      "text": "M3: Regular Check-Ups",
+      "type": "istar.Actor",
+      "x": 227,
+      "y": 96,
+      "customProperties": {
+        "Description": ""
+      },
+      "nodes": [
+        {
+          "id": "bb84a09b-aa58-4512-a830-eee72fff42b2",
+          "text": "G1: Perform Regular Check-Ups on Patients",
+          "type": "istar.Goal",
+          "x": 313,
+          "y": 125,
+          "customProperties": {
+            "Description": ""
+          }
+        },
+        {
+          "id": "65a7949a-a6b7-42f1-9f60-256167e4e602",
+          "text": "G2: Fetch Patients That Need Checking",
+          "type": "istar.Goal",
+          "x": 227,
+          "y": 242,
+          "customProperties": {
+            "Description": "",
+            "GoalType": "Query",
+            "QueriedProperty": "world_db->select(p:Patient | p.needs_checking)",
+            "Controls": "patients_to_check : Sequence(Room)"
+          }
+        },
+        {
+          "id": "ce8bdcee-1052-4ef2-bfc9-4cb96829f6c8",
+          "text": "G3: Check Patients",
+          "type": "istar.Goal",
+          "x": 428,
+          "y": 249,
+          "customProperties": {
+            "Description": "",
+            "GoalType": "Achieve",
+            "AchieveCondition": "patients_to_check->forAll(current_patient | !current_patient.needs_checking)",
+            "Monitors": "patients_to_check",
+            "Controls": "current_patient : Patient"
+          }
+        },
+        {
+          "id": "7569f9ae-e522-4be1-bbda-245f8576fc7b",
+          "text": "G4: Fetch Patient's Room",
+          "type": "istar.Goal",
+          "x": 350,
+          "y": 350,
+          "customProperties": {
+            "Description": "",
+            "GoalType": "Query",
+            "QueriedProperty": "world_db->select(r:Room | r.name in current_patient.room)",
+            "Controls": "patient_room : Room",
+            "Monitors": "current_patient"
+          }
+        },
+        {
+          "id": "180635e5-75a7-4d1c-805b-6fe2e0297eb4",
+          "text": "G5: Check Current Patient",
+          "type": "istar.Goal",
+          "x": 511,
+          "y": 351,
+          "customProperties": {
+            "Description": "",
+            "Monitors": "current_patient, patient_room"
+          }
+        },
+        {
+          "id": "270efb79-dd1d-4c4f-ae5d-5f156cebb82e",
+          "text": "AT1: CheckPatient",
+          "type": "istar.Task",
+          "x": 519,
+          "y": 456,
+          "customProperties": {
+            "Description": "",
+            "Location": "patient_room",
+            "Params": "current_patient"
+          }
+        }
+      ]
+    }
+  ],
+  "orphans": [],
+  "dependencies": [],
+  "links": [
+    {
+      "id": "a8822855-65b4-4f87-97da-8de30d5dac24",
+      "type": "istar.AndRefinementLink",
+      "source": "65a7949a-a6b7-42f1-9f60-256167e4e602",
+      "target": "bb84a09b-aa58-4512-a830-eee72fff42b2"
+    },
+    {
+      "id": "f12a89b2-e6cd-4cf0-99d4-8d13eff8bbab",
+      "type": "istar.AndRefinementLink",
+      "source": "ce8bdcee-1052-4ef2-bfc9-4cb96829f6c8",
+      "target": "bb84a09b-aa58-4512-a830-eee72fff42b2"
+    },
+    {
+      "id": "f982ed63-f10b-4bfa-996c-42b0efb39595",
+      "type": "istar.AndRefinementLink",
+      "source": "7569f9ae-e522-4be1-bbda-245f8576fc7b",
+      "target": "ce8bdcee-1052-4ef2-bfc9-4cb96829f6c8"
+    },
+    {
+      "id": "98c8b0ad-dbf4-4bf3-89db-396405246e11",
+      "type": "istar.AndRefinementLink",
+      "source": "180635e5-75a7-4d1c-805b-6fe2e0297eb4",
+      "target": "ce8bdcee-1052-4ef2-bfc9-4cb96829f6c8"
+    },
+    {
+      "id": "7c6eb83d-f360-45d8-8951-9e613fd9abe6",
+      "type": "istar.AndRefinementLink",
+      "source": "270efb79-dd1d-4c4f-ae5d-5f156cebb82e",
+      "target": "180635e5-75a7-4d1c-805b-6fe2e0297eb4"
+    }
+  ],
+  "display": {
+    "bb84a09b-aa58-4512-a830-eee72fff42b2": {
+      "width": 122.609375,
+      "height": 51
+    },
+    "65a7949a-a6b7-42f1-9f60-256167e4e602": {
+      "width": 104.609375,
+      "height": 44
+    },
+    "7569f9ae-e522-4be1-bbda-245f8576fc7b": {
+      "width": 104.609375,
+      "height": 41
+    },
+    "180635e5-75a7-4d1c-805b-6fe2e0297eb4": {
+      "width": 104.609375,
+      "height": 39
+    }
+  },
+  "tool": "pistar.2.0.0",
+  "istar": "2.0",
+  "saveDate": "Thu, 16 Sep 2021 16:43:03 GMT",
+  "diagram": {
+    "width": 2000,
+    "height": 1300,
+    "name": "Welcome Model",
+    "customProperties": {
+      "Description": "Welcome to the piStar tool! This model describe some of the recent improvements in the tool.\n\nFor help using this tool, please check the Help menu above"
+    }
+  }
+}

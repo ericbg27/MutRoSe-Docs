@@ -1,0 +1,158 @@
+{
+    "actions": [
+        {
+            "name": "dispense-medication",
+            "capabilities": "medication-dispensing"
+        },
+        {
+            "name": "move-around",
+            "capabilities": ""
+        }
+    ],
+    "tasks": {
+        "t0": {
+            "id": "AT1_1|1",
+            "name": "MoveAround",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "move-around",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        "t1": {
+            "id": "AT2_1|1",
+            "name": "DispenseMedication",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "PersonFound"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "dispense-medication",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        "t2": {
+            "id": "AT1_2|1",
+            "name": "MoveAround",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "move-around",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        "t3": {
+            "id": "AT2_2|1",
+            "name": "DispenseMedication",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "PersonFound"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "dispense-medication",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "False",
+            "divisible": "True"
+        }
+    },
+    "constraints": [
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t0",
+                "t1": "t1"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t2",
+                "t1": "t3"
+            },
+            "group": "False",
+            "divisible": "True"
+        }
+    ],
+    "mission_decompositions": [
+        [
+            "t0",
+            "t1",
+            "t2",
+            "t3"
+        ]
+    ]
+}

@@ -1,0 +1,26 @@
+<world_db>
+	<Room>
+		<name>RoomA</name>
+		<is_occupied>True</is_occupied>
+		<patients>Patient1 Patient2</patients>
+	</Room>
+	<Room>
+		<name>SanitizationRoom</name>
+	</Room>
+	<Patient>
+		<name>Patient1</name>
+		<infectious_disease>True</infectious_disease>
+		<diabetes>False</diabetes>
+		<post_surgical>False</post_surgical>
+		<available>True</available>
+		<checked>False</checked>
+	</Patient>
+	<Patient>
+		<name>Patient2</name>
+		<infectious_disease>False</infectious_disease>
+		<diabetes>True</diabetes>
+		<post_surgical>False</post_surgical>
+		<available>False</available>
+		<checked>False</checked>
+	</Patient>
+</world_db>

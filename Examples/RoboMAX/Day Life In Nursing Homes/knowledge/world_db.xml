@@ -1,0 +1,22 @@
+<world_db>
+	<Room>
+		<name>RoomA</name>
+		<needs_assistance>True</needs_assistance>
+		<needs_cleaning>True</needs_cleaning>
+	</Room>
+	<Room>
+		<name>RoomB</name>
+		<needs_assistance>True</needs_assistance>
+		<needs_cleaning>True</needs_cleaning>
+	</Room>	
+	<Patient>
+		<name>Patient1</name>
+		<needs_checking>True</needs_checking>
+		<room>RoomB</room>
+	</Patient>
+	<Patient>
+		<name>Patient2</name>
+		<needs_checking>True</needs_checking>
+		<room>RoomA</room>
+	</Patient>
+</world_db>

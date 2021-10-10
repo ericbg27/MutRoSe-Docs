@@ -1,0 +1,113 @@
+{
+    "world_db": {
+        "type": "file",
+        "file_type": "xml",
+        "path": "knowledge/world_db.xml",
+        "xml_root": "world_db"
+    },
+
+    "output": {
+        "output_type": "file",
+        "file_path": "output/task_output.json",
+        "file_type": "json"
+    },
+
+    "location_types": ["Location", "Storage"],
+
+    "type_mapping": [
+        {
+            "hddl_type": "agent",
+            "ocl_type": "Agent"
+        },
+        {
+            "hddl_type": "location",
+            "ocl_type": "Location"
+        },
+        {
+            "hddl_type": "storage",
+            "ocl_type": "Storage"
+        },
+        {
+            "hddl_type": "obj",
+            "ocl_type": "Object"
+        }
+    ],
+
+    "var_mapping": [
+        {
+            "task_id": "AT1",
+            "map": [
+                {
+                    "gm_var": "object_storage",
+                    "hddl_var": "?s"
+                },
+                {
+                    "gm_var": "current_object",
+                    "hddl_var": "?o"
+                }
+            ]
+        },
+        {
+            "task_id": "AT3",
+            "map": [
+                {
+                    "gm_var": "delivery_location",
+                    "hddl_var": "?l"
+                }
+            ]
+        }
+    ],
+
+    "semantic_mapping": [
+        {
+            "type": "attribute",
+            "name": "requesting_equipment",
+            "relates_to": "Agent",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "requestingequipment",
+                "arg_sorts": ["agent"]
+            }
+        },
+        {
+            "type": "ownership",
+            "owner": "Storage",
+            "owned": "Object",
+            "relationship_type": "attribute",
+            "attribute_name": "objects",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "at",
+                "arg_sorts": ["obj", "storage"]
+            }
+        },
+        {
+            "type": "ownership",
+            "owner": "Agent",
+            "owned": "Object",
+            "relationship_type": "attribute",
+            "attribute_name": "requested_objects",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "requested",
+                "arg_sorts": ["obj", "agent"]
+            }
+        },
+        {
+            "type": "relationship",
+            "main_entity": "Agent",
+            "related_entity": "Location",
+            "relationship_type": "attribute",
+            "attribute_name": "location",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "at",
+                "arg_sorts": ["location", "agent"]
+            }
+        }
+    ]
+}

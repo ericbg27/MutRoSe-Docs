@@ -1,0 +1,195 @@
+{
+    "world_db": {
+        "type": "file",
+        "file_type": "xml",
+        "path": "knowledge/world_db.xml",
+        "xml_root": "world_db"
+    },
+
+    "output": {
+        "output_type": "file",
+        "file_path": "output/task_output.json",
+        "file_type": "json"
+    },
+
+    "location_types": ["Room"],
+
+    "type_mapping": [
+        {
+            "hddl_type": "room",
+            "ocl_type": "Room"
+        },
+        {
+            "hddl_type": "patient",
+            "ocl_type": "Patient"
+        }
+    ],
+
+    "var_mapping": [
+        {
+            "task_id": "AT1",
+            "map": [
+                {
+                    "gm_var": "current_room",
+                    "hddl_var": "?rm"
+                }
+            ]
+        },
+        {
+            "task_id": "AT2",
+            "map": [
+                {
+                    "gm_var": "current_room",
+                    "hddl_var": "?rm"
+                },
+                {
+                    "gm_var": "current_patient",
+                    "hddl_var": "?p"
+                }
+            ]
+        },
+        {
+            "task_id": "AT3",
+            "map": [
+                {
+                    "gm_var": "current_room",
+                    "hddl_var": "?rm"
+                },
+                {
+                    "gm_var": "current_patient",
+                    "hddl_var": "?p"
+                }
+            ]
+        },
+        {
+            "task_id": "AT4",
+            "map": [
+                {
+                    "gm_var": "current_room",
+                    "hddl_var": "?rm"
+                },
+                {
+                    "gm_var": "current_patient",
+                    "hddl_var": "?p"
+                }
+            ]
+        },
+        {
+            "task_id": "AT5",
+            "map": [
+                {
+                    "gm_var": "current_room",
+                    "hddl_var": "?rm"
+                },
+                {
+                    "gm_var": "current_patient",
+                    "hddl_var": "?p"
+                }
+            ]
+        },
+        {
+            "task_id": "AT6",
+            "map": [
+                {
+                    "gm_var": "current_room",
+                    "hddl_var": "?rm"
+                },
+                {
+                    "gm_var": "current_patient",
+                    "hddl_var": "?p"
+                }
+            ]
+        },
+        {
+            "task_id": "AT7",
+            "map": [
+            	{
+            	    "gm_var": "sanitization_room",
+            	    "hddl_var": "?srm"
+            	}
+            ]
+        }
+    ],
+
+    "semantic_mapping": [
+        {
+            "type": "attribute",
+            "name": "is_occupied",
+            "relates_to": "Room",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "occupied",
+                "arg_sorts": ["room"]
+            }
+        },
+        {
+            "type": "attribute",
+            "name": "available",
+            "relates_to": "Patient",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "available",
+                "arg_sorts": ["patient"]
+            }
+        },
+        {
+            "type": "attribute",
+            "name": "infectious_disease",
+            "relates_to": "Patient",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "infectiousdisease",
+                "arg_sorts": ["patient"]
+            }
+        },
+        {
+            "type": "attribute",
+            "name": "diabetes",
+            "relates_to": "Patient",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "diabetes",
+                "arg_sorts": ["patient"]
+            }
+        },
+        {
+            "type": "attribute",
+            "name": "post_surgical",
+            "relates_to": "Patient",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "postsurgical",
+                "arg_sorts": ["patient"]
+            }
+        },
+        {
+            "type": "attribute",
+            "name": "checked",
+            "relates_to": "Patient",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "checked",
+                "arg_sorts": ["patient"]
+            }
+        },
+        {
+            "type": "relationship",
+            "main_entity": "Room",
+            "related_entity": "Patient",
+            "relationship_type": "attribute",
+            "attribute_name": "patients",
+            "belongs_to": "world_db",
+            "mapped_type": "predicate",
+            "map": {
+                "pred": "at",
+                "arg_sorts": ["patient", "room"]
+            }
+        }
+    ]
+}

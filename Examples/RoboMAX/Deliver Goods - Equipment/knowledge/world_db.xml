@@ -1,0 +1,34 @@
+<world_db>
+	<Agent>
+		<name>Agent1</name>
+		<requesting_equipment>True</requesting_equipment>
+		<requested_objects>
+			<Object>
+				<name>SterileEquipment</name>
+			</Object>
+			<Object>
+				<name>CleanLinens</name>
+			</Object>
+		</requested_objects>
+		<location>Loc1</location>
+	</Agent>
+	<Storage>
+		<name>Storage1</name>
+		<objects>
+			<Object>
+				<name>SterileEquipment</name>
+			</Object>
+		</objects>
+	</Storage>
+	<Storage>
+		<name>Storage2</name>
+		<objects>
+			<Object>
+				<name>CleanLinens</name>
+			</Object>
+		</objects>
+	</Storage>
+	<Location>
+		<name>Loc1</name>
+	</Location>
+</world_db>

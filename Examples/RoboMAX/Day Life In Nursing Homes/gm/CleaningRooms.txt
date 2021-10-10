@@ -1,0 +1,111 @@
+{
+  "actors": [
+    {
+      "id": "d3113e34-56de-4af4-8e04-54f0bf4a5c4f",
+      "text": "M2: Cleaning Rooms",
+      "type": "istar.Actor",
+      "x": 384,
+      "y": 116,
+      "customProperties": {
+        "Description": ""
+      },
+      "nodes": [
+        {
+          "id": "db5a0aa5-d7c9-495b-a4e2-749ef0f8f56b",
+          "text": "G1: Clean Rooms Exposed Surfaces [G2;G3]",
+          "type": "istar.Goal",
+          "x": 494,
+          "y": 163,
+          "customProperties": {
+            "Description": ""
+          }
+        },
+        {
+          "id": "eb6fe7e9-9105-47f2-b8a1-611ffe1cc2de",
+          "text": "G2: Fetch Rooms That Need Cleaning",
+          "type": "istar.Goal",
+          "x": 384,
+          "y": 279,
+          "customProperties": {
+            "Description": "",
+            "GoalType": "Query",
+            "QueriedProperty": "world_db->select(r:Room | r.needs_cleaning)",
+            "Controls": "rooms_to_clean : Sequence(Room)"
+          }
+        },
+        {
+          "id": "1715257e-c991-45fe-9f76-b7f54477740a",
+          "text": "G3: Clean Rooms With UV Light",
+          "type": "istar.Goal",
+          "x": 629,
+          "y": 283,
+          "customProperties": {
+            "Description": "",
+            "GoalType": "Achieve",
+            "AchieveCondition": "rooms_to_clean->forAll(current_room | !current_room.needs_cleaning)",
+            "Monitors": "rooms_to_clean",
+            "Controls": "current_room : Room"
+          }
+        },
+        {
+          "id": "5e20cfe9-07d5-4777-916b-252c074d5c2b",
+          "text": "AT1: CleanRoomUV",
+          "type": "istar.Task",
+          "x": 634,
+          "y": 387,
+          "customProperties": {
+            "Description": "",
+            "Location": "current_room"
+          }
+        }
+      ]
+    }
+  ],
+  "orphans": [],
+  "dependencies": [],
+  "links": [
+    {
+      "id": "63c40c9e-1b1e-4cbb-a9ab-6adf09fcc452",
+      "type": "istar.AndRefinementLink",
+      "source": "eb6fe7e9-9105-47f2-b8a1-611ffe1cc2de",
+      "target": "db5a0aa5-d7c9-495b-a4e2-749ef0f8f56b"
+    },
+    {
+      "id": "a63aedea-ed67-4afe-b7f5-80585a237a14",
+      "type": "istar.AndRefinementLink",
+      "source": "1715257e-c991-45fe-9f76-b7f54477740a",
+      "target": "db5a0aa5-d7c9-495b-a4e2-749ef0f8f56b"
+    },
+    {
+      "id": "34dd412e-35d3-499c-85ae-e2bc2f5f10ce",
+      "type": "istar.AndRefinementLink",
+      "source": "5e20cfe9-07d5-4777-916b-252c074d5c2b",
+      "target": "1715257e-c991-45fe-9f76-b7f54477740a"
+    }
+  ],
+  "display": {
+    "db5a0aa5-d7c9-495b-a4e2-749ef0f8f56b": {
+      "width": 112.609375,
+      "height": 46
+    },
+    "eb6fe7e9-9105-47f2-b8a1-611ffe1cc2de": {
+      "width": 101.609375,
+      "height": 43
+    },
+    "1715257e-c991-45fe-9f76-b7f54477740a": {
+      "width": 99.609375,
+      "height": 41
+    }
+  },
+  "tool": "pistar.2.0.0",
+  "istar": "2.0",
+  "saveDate": "Thu, 16 Sep 2021 15:22:01 GMT",
+  "diagram": {
+    "width": 2000,
+    "height": 1300,
+    "name": "Welcome Model",
+    "customProperties": {
+      "Description": "Welcome to the piStar tool! This model describe some of the recent improvements in the tool.\n\nFor help using this tool, please check the Help menu above"
+    }
+  }
+}

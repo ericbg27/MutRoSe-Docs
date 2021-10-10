@@ -1,0 +1,75 @@
+(define (domain hospital)
+	(:types location storage obj agent - object)
+	(:predicates
+		(requestingequipment ?a - agent)
+		(at ?o - obj ?s - storage)
+		(at ?l - location ?a - agent)
+		(requested ?o - obj ?a - agent)
+	)
+	(:capabilities )
+
+	(:task GetObject :parameters (?r - robot ?s - storage ?o - obj))
+	(:method object-get
+		:parameters (?r - robot ?s - storage ?o - obj)
+		:task (GetObject ?r ?s ?o)
+		:precondition ()
+		:ordered-subtasks (and
+			(get-object ?r ?s ?o)
+		)
+	)
+	(:action get-object
+		:parameters (?r - robot ?s - storage ?o - obj)
+	)
+
+	(:task RechargeBattery :parameters (?r - robot))
+	(:method battery-recharge
+		:parameters (?r - robot)
+		:task (RechargeBattery ?r)
+		:precondition ()
+		:ordered-subtasks (and
+			(recharge-battery ?r)
+		)
+	)
+	(:action recharge-battery
+		:parameters (?r - robot)
+	)
+
+	(:task DeliverObjects :parameters (?r - robot ?l - location))
+	(:method objects-delivery
+		:parameters (?r - robot ?l - location)
+		:task (DeliverObjects ?r ?l)
+		:precondition ()
+		:ordered-subtasks (and
+			(deliver-objects ?r ?l)
+		)
+	)
+	(:action deliver-objects
+		:parameters (?r - robot ?l - location)
+	)
+
+	(:task ReturnObjectsToCheckpoint :parameters (?r - robot))
+	(:method object-returning
+		:parameters (?r - robot)
+		:task (ReturnObjectsToCheckpoint ?r)
+		:precondition ()
+		:ordered-subtasks (and
+			(return-objects ?r)
+		)
+	)
+	(:action return-objects
+		:parameters (?r - robot)
+	)
+
+	(:task AlertTrigger :parameters (?r - robot))
+	(:method alert-trigger
+		:parameters (?r - robot)
+		:task (AlertTrigger ?r)
+		:precondition ()
+		:ordered-subtasks (and
+			(trigger-alert ?r)
+		)
+	)
+	(:action trigger-alert
+		:parameters (?r - robot)
+	)
+)

@@ -1,0 +1,896 @@
+{
+    "actions": [
+        {
+            "name": "alert-manager",
+            "capabilities": ""
+        },
+        {
+            "name": "alert-nurses",
+            "capabilities": ""
+        },
+        {
+            "name": "apply-test-sequence",
+            "capabilities": ""
+        },
+        {
+            "name": "enter-room",
+            "capabilities": ""
+        },
+        {
+            "name": "find-equipment",
+            "capabilities": ""
+        },
+        {
+            "name": "interact-with-patient",
+            "capabilities": ""
+        },
+        {
+            "name": "observe-patient",
+            "capabilities": ""
+        }
+    ],
+    "tasks": {
+        "t0": {
+            "id": "AT1_1|1",
+            "name": "EnterRoom",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "enter-room",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t1": {
+            "id": "AT2_1|1",
+            "name": "FindEquipment",
+            "arguments": {
+                "?r": "robot",
+                "?srm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?srm": "StorageRoom"
+            },
+            "locations": "StorageRoom",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "NeedEquipment"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "find-equipment",
+                    "arguments": "?r ?srm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t2": {
+            "id": "AT3_1|1",
+            "name": "EnterRoom",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "NeedEquipment"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "enter-room",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t3": {
+            "id": "AT4_1|1",
+            "name": "ObservePatient",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "observe-patient",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t4": {
+            "id": "AT5_1|1",
+            "name": "InteractWithPatient",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "AlertReceived"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "interact-with-patient",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t5": {
+            "id": "AT6_1|1",
+            "name": "ApplyTestSequence",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "AlertReceived",
+                "HelpNeeded"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "apply-test-sequence",
+                    "arguments": "?r ?rm"
+                },
+                "a1": {
+                    "name": "alert-nurses",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t6": {
+            "id": "AT7_1|1",
+            "name": "AlertManager",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "alert-manager",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t7": {
+            "id": "AT1_2|1",
+            "name": "EnterRoom",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "enter-room",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t8": {
+            "id": "AT2_2|1",
+            "name": "FindEquipment",
+            "arguments": {
+                "?r": "robot",
+                "?srm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?srm": "StorageRoom"
+            },
+            "locations": "StorageRoom",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "NeedEquipment"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "find-equipment",
+                    "arguments": "?r ?srm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t9": {
+            "id": "AT3_2|1",
+            "name": "EnterRoom",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "NeedEquipment"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "enter-room",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t10": {
+            "id": "AT4_2|1",
+            "name": "ObservePatient",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "observe-patient",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t11": {
+            "id": "AT5_2|1",
+            "name": "InteractWithPatient",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "AlertReceived"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "interact-with-patient",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t12": {
+            "id": "AT6_2|1",
+            "name": "ApplyTestSequence",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": [
+                "AlertReceived",
+                "HelpNeeded"
+            ],
+            "decomposition": {
+                "a0": {
+                    "name": "apply-test-sequence",
+                    "arguments": "?r ?rm"
+                },
+                "a1": {
+                    "name": "alert-nurses",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t13": {
+            "id": "AT7_2|1",
+            "name": "AlertManager",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomB"
+            },
+            "locations": "RoomB",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": "",
+            "effects": "",
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "alert-manager",
+                    "arguments": "?r ?rm"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        }
+    },
+    "constraints": [
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t0",
+                "t1": "t6"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t1",
+                "t1": "t6"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t2",
+                "t1": "t6"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t3",
+                "t1": "t6"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t4",
+                "t1": "t6"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t5",
+                "t1": "t6"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t0",
+                "t1": "t1"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t2",
+                "t1": "t3"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t1",
+                "t1": "t2"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t3",
+                "t1": "t4"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t4",
+                "t1": "t5"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t7",
+                "t1": "t13"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t8",
+                "t1": "t13"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t9",
+                "t1": "t13"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t10",
+                "t1": "t13"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t11",
+                "t1": "t13"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t12",
+                "t1": "t13"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t7",
+                "t1": "t8"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t9",
+                "t1": "t10"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t8",
+                "t1": "t9"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t10",
+                "t1": "t11"
+            }
+        },
+        {
+            "type": "SEQ",
+            "task_instances": {
+                "t0": "t11",
+                "t1": "t12"
+            }
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t0",
+                "t1": "t1"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t0",
+                "t1": "t2"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t0",
+                "t1": "t3"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t0",
+                "t1": "t4"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t0",
+                "t1": "t5"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t1",
+                "t1": "t2"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t1",
+                "t1": "t3"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t1",
+                "t1": "t4"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t1",
+                "t1": "t5"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t2",
+                "t1": "t3"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t2",
+                "t1": "t4"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t2",
+                "t1": "t5"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t3",
+                "t1": "t4"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t3",
+                "t1": "t5"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t4",
+                "t1": "t5"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t7",
+                "t1": "t8"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t7",
+                "t1": "t9"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t7",
+                "t1": "t10"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t7",
+                "t1": "t11"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t7",
+                "t1": "t12"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t8",
+                "t1": "t9"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t8",
+                "t1": "t10"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t8",
+                "t1": "t11"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t8",
+                "t1": "t12"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t9",
+                "t1": "t10"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t9",
+                "t1": "t11"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t9",
+                "t1": "t12"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t10",
+                "t1": "t11"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t10",
+                "t1": "t12"
+            },
+            "group": "False",
+            "divisible": "True"
+        },
+        {
+            "type": "EC",
+            "task_instances": {
+                "t0": "t11",
+                "t1": "t12"
+            },
+            "group": "False",
+            "divisible": "True"
+        }
+    ],
+    "mission_decompositions": [
+        [
+            "t0",
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6",
+            "t7",
+            "t8",
+            "t9",
+            "t10",
+            "t11",
+            "t12",
+            "t13"
+        ]
+    ]
+}

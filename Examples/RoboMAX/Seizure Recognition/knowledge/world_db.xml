@@ -1,0 +1,13 @@
+<world_db>
+	<Room>
+		<name>RoomA</name>
+		<help_needed>True</help_needed>
+	</Room>
+	<Room>
+		<name>RoomB</name>
+		<help_needed>True</help_needed>
+	</Room>
+	<Room>
+		<name>StorageRoom</name>
+	</Room>
+</world_db>

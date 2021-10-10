@@ -1,0 +1,166 @@
+{
+  "actors": [
+    {
+      "id": "8d866f1b-3d44-4880-a28d-74ed5c1dff2f",
+      "text": "M1: Medication Dispensing",
+      "type": "istar.Actor",
+      "x": 131,
+      "y": 107,
+      "customProperties": {
+        "Description": ""
+      },
+      "nodes": [
+        {
+          "id": "ece98694-f644-4774-9225-485c79fc30c0",
+          "text": "G1: Dispense Medication If Needed",
+          "type": "istar.Goal",
+          "x": 284,
+          "y": 139,
+          "customProperties": {
+            "Description": ""
+          }
+        },
+        {
+          "id": "0635faeb-c4b1-4207-b969-54e2a4d9c425",
+          "text": "G2: Fetch Rooms That Need Assistance",
+          "type": "istar.Goal",
+          "x": 144,
+          "y": 236,
+          "customProperties": {
+            "Description": "",
+            "GoalType": "Query",
+            "QueriedProperty": "world_db->select(r:Room | r.needs_assistance)",
+            "Controls": "rooms_to_assist : Sequence(Room)"
+          }
+        },
+        {
+          "id": "75e52b43-9384-4297-aa4c-cd79b0979288",
+          "text": "G3: Assist Rooms [G4#G5]",
+          "type": "istar.Goal",
+          "x": 420,
+          "y": 244,
+          "customProperties": {
+            "Description": "",
+            "GoalType": "Achieve",
+            "AchieveCondition": "rooms_to_assist->forAll(current_room | )",
+            "Monitors": "rooms_to_assist",
+            "Controls": "current_room : Room",
+            "Group": "False"
+          }
+        },
+        {
+          "id": "b22e0e5c-60a9-4688-844d-cbacaed8a1d2",
+          "text": "G4: Move Around The Room",
+          "type": "istar.Goal",
+          "x": 287,
+          "y": 362,
+          "customProperties": {
+            "Description": ""
+          }
+        },
+        {
+          "id": "5762ec18-2ce2-4a1a-93c5-99fde15be4db",
+          "text": "G5: DIspense The Needed Medication",
+          "type": "istar.Goal",
+          "x": 560,
+          "y": 352,
+          "customProperties": {
+            "Description": "",
+            "CreationCondition": "assertion trigger \"PersonFound\""
+          }
+        },
+        {
+          "id": "eb9f38c6-6eba-41fd-9e76-008b4b8c7189",
+          "text": "AT1: MoveAround",
+          "type": "istar.Task",
+          "x": 287,
+          "y": 486,
+          "customProperties": {
+            "Description": "",
+            "Location": "current_room"
+          }
+        },
+        {
+          "id": "30fb6e3a-662a-4714-b937-8e74cf478d2d",
+          "text": "AT2: DispenseMedication",
+          "type": "istar.Task",
+          "x": 570,
+          "y": 484,
+          "customProperties": {
+            "Description": "",
+            "Location": "current_room"
+          }
+        }
+      ]
+    }
+  ],
+  "orphans": [],
+  "dependencies": [],
+  "links": [
+    {
+      "id": "c988bd4d-31c1-4167-b04d-6e6a6a6ea7e0",
+      "type": "istar.AndRefinementLink",
+      "source": "0635faeb-c4b1-4207-b969-54e2a4d9c425",
+      "target": "ece98694-f644-4774-9225-485c79fc30c0"
+    },
+    {
+      "id": "6b83f2c7-752e-4f73-8f7a-15b433221ded",
+      "type": "istar.AndRefinementLink",
+      "source": "75e52b43-9384-4297-aa4c-cd79b0979288",
+      "target": "ece98694-f644-4774-9225-485c79fc30c0"
+    },
+    {
+      "id": "ac7c6d55-94d5-4fc7-bf02-7ce46872ca9c",
+      "type": "istar.AndRefinementLink",
+      "source": "b22e0e5c-60a9-4688-844d-cbacaed8a1d2",
+      "target": "75e52b43-9384-4297-aa4c-cd79b0979288"
+    },
+    {
+      "id": "904b726e-765c-42a3-83ac-11c0ca0f69b1",
+      "type": "istar.AndRefinementLink",
+      "source": "eb9f38c6-6eba-41fd-9e76-008b4b8c7189",
+      "target": "b22e0e5c-60a9-4688-844d-cbacaed8a1d2"
+    },
+    {
+      "id": "ed75deb3-d463-4b51-9d9c-10a05f0dd186",
+      "type": "istar.AndRefinementLink",
+      "source": "5762ec18-2ce2-4a1a-93c5-99fde15be4db",
+      "target": "75e52b43-9384-4297-aa4c-cd79b0979288"
+    },
+    {
+      "id": "ad4377ac-53b8-4e18-8956-5f990eea9986",
+      "type": "istar.AndRefinementLink",
+      "source": "30fb6e3a-662a-4714-b937-8e74cf478d2d",
+      "target": "5762ec18-2ce2-4a1a-93c5-99fde15be4db"
+    }
+  ],
+  "display": {
+    "ece98694-f644-4774-9225-485c79fc30c0": {
+      "width": 121.609375,
+      "height": 39
+    },
+    "0635faeb-c4b1-4207-b969-54e2a4d9c425": {
+      "width": 114.609375,
+      "height": 56
+    },
+    "b22e0e5c-60a9-4688-844d-cbacaed8a1d2": {
+      "width": 96.609375,
+      "height": 40
+    },
+    "5762ec18-2ce2-4a1a-93c5-99fde15be4db": {
+      "width": 117.609375,
+      "height": 42
+    }
+  },
+  "tool": "pistar.2.0.0",
+  "istar": "2.0",
+  "saveDate": "Thu, 16 Sep 2021 16:47:35 GMT",
+  "diagram": {
+    "width": 2000,
+    "height": 1300,
+    "name": "Welcome Model",
+    "customProperties": {
+      "Description": "Welcome to the piStar tool! This model describe some of the recent improvements in the tool.\n\nFor help using this tool, please check the Help menu above"
+    }
+  }
+}

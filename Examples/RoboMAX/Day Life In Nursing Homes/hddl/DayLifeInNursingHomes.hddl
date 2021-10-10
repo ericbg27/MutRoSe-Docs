@@ -1,0 +1,71 @@
+(define (domain hospital)
+	(:types patient room - object)
+	(:predicates
+		(assistanceneeded ?rm - room)
+		(needscleaning ?rm - room)
+		(needschecking ?p - patient)
+		(at ?rm - room ?p - patient)
+	)
+	(:capabilities patient-checking medication-dispensing cleaning)
+
+	(:task MoveAround :parameters (?r - robot ?rm - room))
+	(:method moving-around
+		:parameters (?r - robot ?rm - room)
+		:task (MoveAround ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(move-around ?r ?rm)		
+		)
+	)
+	(:action move-around
+		:parameters (?r - robot ?rm - room)
+	)
+
+	(:task DispenseMedication :parameters (?r - robot ?rm - room))
+	(:method medication-dispense
+		:parameters (?r - robot ?rm - room)
+		:task (DispenseMedication ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(dispense-medication ?r ?rm)		
+		)
+	)
+	(:action dispense-medication
+		:parameters (?r - robot ?rm - room)
+		:required-capabilities (medication-dispensing)
+	)
+
+	(:task CleanRoomUV :parameters (?r - robot ?rm - room))
+	(:method room-clean-uv
+		:parameters (?r - robot ?rm - room)
+		:task (CleanRoomUV ?r ?rm)
+		:precondition ()
+		:ordered-subtasks (and
+			(clean-room-uv ?r ?rm)		
+		)
+	)
+	(:action clean-room-uv
+		:parameters (?r - robot ?rm - room)
+		:required-capabilities (cleaning)
+		:effect (and
+			(not (needscleaning ?rm))
+		)
+	)
+
+	(:task CheckPatient :parameters (?r - robot ?rm - room ?p - patient))
+	(:method patient-check
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:task (CheckPatient ?r ?rm ?p)
+		:precondition ()
+		:ordered-subtasks (and
+			(check-patient ?r ?rm ?p)		
+		)
+	)
+	(:action check-patient
+		:parameters (?r - robot ?rm - room ?p - patient)
+		:required-capabilities (patient-checking)
+		:effect (and
+			(not (needschecking ?p))
+		)
+	)
+)
