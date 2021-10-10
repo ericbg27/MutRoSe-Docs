@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actions>
+    <action0>
+        <name>pick-object</name>
+        <capabilities number="1">
+            <capability0>pickobject</capability0>
+        </capabilities>
+    </action0>
+</actions>
+<tasks>
+    <task0>
+        <id>AT1_1|1</id>
+        <name>PickObject</name>
+        <arguments>
+            <arg0>
+                <name>?r</name>
+                <type>robot</type>
+                <value/>
+            </arg0>
+            <arg1>
+                <name>?rm</name>
+                <type>room</type>
+                <value>RoomA</value>
+            </arg1>
+        </arguments>
+        <locations>
+            <t0>RoomA</t0>
+        </locations>
+        <robots_num fixed="True" num="1"/>
+        <decomposition>
+            <action0>pick-object</action0>
+            <action1>pick-object</action1>
+        </decomposition>
+        <group>True</group>
+        <divisible>True</divisible>
+    </task0>
+    <task1>
+        <id>AT1_1|2</id>
+        <name>PickObject</name>
+        <arguments>
+            <arg0>
+                <name>?r</name>
+                <type>robot</type>
+                <value/>
+            </arg0>
+            <arg1>
+                <name>?rm</name>
+                <type>room</type>
+                <value>RoomA</value>
+            </arg1>
+        </arguments>
+        <locations>
+            <t0>RoomA</t0>
+        </locations>
+        <robots_num fixed="True" num="1"/>
+        <decomposition>
+            <action0>pick-object</action0>
+        </decomposition>
+        <group>True</group>
+        <divisible>True</divisible>
+    </task1>
+</tasks>
+<constraints/>
+<mission_decompositions>
+    <decomposition0>
+        <tasks>
+            <t0>task0</t0>
+        </tasks>
+    </decomposition0>
+</mission_decompositions>

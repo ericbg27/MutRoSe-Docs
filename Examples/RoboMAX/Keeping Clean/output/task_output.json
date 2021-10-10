@@ -111,7 +111,7 @@
                     "arguments": "?r ?rm"
                 }
             },
-            "group": "False",
+            "group": "True",
             "divisible": "True"
         },
         "t2": {
@@ -139,7 +139,7 @@
                     "arguments": "?r ?rm"
                 }
             },
-            "group": "False",
+            "group": "True",
             "divisible": "True"
         },
         "t3": {
@@ -167,7 +167,7 @@
                     "arguments": "?r ?rm"
                 }
             },
-            "group": "False",
+            "group": "True",
             "divisible": "True"
         },
         "t4": {
@@ -195,7 +195,7 @@
                     "arguments": "?r ?rm"
                 }
             },
-            "group": "False",
+            "group": "True",
             "divisible": "True"
         },
         "t5": {
@@ -223,7 +223,7 @@
                     "arguments": "?r ?rm"
                 }
             },
-            "group": "False",
+            "group": "True",
             "divisible": "True"
         },
         "t6": {
@@ -253,7 +253,7 @@
                     "arguments": "?r ?rm"
                 }
             },
-            "group": "False",
+            "group": "True",
             "divisible": "True"
         },
         "t7": {

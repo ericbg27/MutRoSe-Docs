@@ -2,13 +2,13 @@
     "world_db": {
         "type": "file",
         "file_type": "xml",
-        "path": "knowledge/Room Preparation/Multiple Locations/V2//World_db.xml",
+        "path": "knowledge/World_db.xml",
         "xml_root": "world_db"
     },
 
     "output": {
         "output_type": "file",
-        "file_path": "output/Room Preparation/Multiple Locations/V2/task_output.json",
+        "file_path": "output/task_output.json",
         "file_type": "json"
     },
 

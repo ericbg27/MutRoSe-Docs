@@ -1,0 +1,101 @@
+{
+    "actions": [
+        {
+            "name": "pick-object",
+            "capabilities": "pickobject"
+        }
+    ],
+    "tasks": {
+        "t0": {
+            "id": "AT1_1_1|1",
+            "name": "PickObject",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room",
+                "?o": "obj"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA",
+                "?o": "obj1"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": [
+                {
+                    "predicate": "not obj1.is_picked",
+                    "vars": "obj1",
+                    "var_types": "obj"
+                }
+            ],
+            "effects": [
+                {
+                    "predicate": "obj1.is_picked",
+                    "vars": "obj1",
+                    "var_types": "obj"
+                }
+            ],
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "pick-object",
+                    "arguments": "?r ?rm ?o"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        },
+        "t1": {
+            "id": "AT1_1_2|1",
+            "name": "PickObject",
+            "arguments": {
+                "?r": "robot",
+                "?rm": "room",
+                "?o": "obj"
+            },
+            "arguments_values": {
+                "?r": "",
+                "?rm": "RoomA",
+                "?o": "obj2"
+            },
+            "locations": "RoomA",
+            "robots_num": {
+                "fixed": "True",
+                "num": "1"
+            },
+            "preconditions": [
+                {
+                    "predicate": "not obj2.is_picked",
+                    "vars": "obj2",
+                    "var_types": "obj"
+                }
+            ],
+            "effects": [
+                {
+                    "predicate": "obj2.is_picked",
+                    "vars": "obj2",
+                    "var_types": "obj"
+                }
+            ],
+            "triggering_events": "",
+            "decomposition": {
+                "a0": {
+                    "name": "pick-object",
+                    "arguments": "?r ?rm ?o"
+                }
+            },
+            "group": "True",
+            "divisible": "True"
+        }
+    },
+    "constraints": "",
+    "mission_decompositions": [
+        [
+            "t0",
+            "t1"
+        ]
+    ]
+}

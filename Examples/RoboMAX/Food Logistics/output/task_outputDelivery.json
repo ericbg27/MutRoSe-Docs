@@ -165,10 +165,14 @@
             "triggering_events": "",
             "decomposition": {
                 "a0": {
+                    "name": "navto",
+                    "arguments": "?r1 ?l"
+                },
+                "a1": {
                     "name": "approach-human",
                     "arguments": "?r1 ?l ?p"
                 },
-                "a1": {
+                "a2": {
                     "name": "wait-for-human-to-fetch",
                     "arguments": "?r1 ?l ?p"
                 }
@@ -219,14 +223,22 @@
             "triggering_events": "",
             "decomposition": {
                 "a0": {
+                    "name": "navto",
+                    "arguments": "?r1 ?l"
+                },
+                "a1": {
+                    "name": "navto",
+                    "arguments": "?r2 ?l"
+                },
+                "a2": {
                     "name": "approach-robot",
                     "arguments": "?r1 ?r2"
                 },
-                "a1": {
+                "a3": {
                     "name": "grasp-meal",
                     "arguments": "?r2 ?r1"
                 },
-                "a2": {
+                "a4": {
                     "name": "deliver-meal-to-patient",
                     "arguments": "?r2 ?p ?l"
                 }
@@ -361,10 +373,14 @@
             "triggering_events": "",
             "decomposition": {
                 "a0": {
+                    "name": "navto",
+                    "arguments": "?r1 ?l"
+                },
+                "a1": {
                     "name": "approach-human",
                     "arguments": "?r1 ?l ?p"
                 },
-                "a1": {
+                "a2": {
                     "name": "wait-for-human-to-fetch",
                     "arguments": "?r1 ?l ?p"
                 }
@@ -415,14 +431,22 @@
             "triggering_events": "",
             "decomposition": {
                 "a0": {
+                    "name": "navto",
+                    "arguments": "?r1 ?l"
+                },
+                "a1": {
+                    "name": "navto",
+                    "arguments": "?r2 ?l"
+                },
+                "a2": {
                     "name": "approach-robot",
                     "arguments": "?r1 ?r2"
                 },
-                "a1": {
+                "a3": {
                     "name": "grasp-meal",
                     "arguments": "?r2 ?r1"
                 },
-                "a2": {
+                "a4": {
                     "name": "deliver-meal-to-patient",
                     "arguments": "?r2 ?p ?l"
                 }

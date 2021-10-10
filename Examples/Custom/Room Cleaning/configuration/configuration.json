@@ -2,13 +2,13 @@
     "world_db": {
         "type": "file",
         "file_type": "xml",
-        "path": "knowledge/Room Cleaning/OR/World_db2.xml",
+        "path": "knowledge/World_db.xml",
         "xml_root": "world_db"
     },
 
     "output": {
         "output_type": "file",
-        "file_path": "output/Room Cleaning/OR/task_output2.json",
+        "file_path": "output/task_output.json",
         "file_type": "json"
     },
 
