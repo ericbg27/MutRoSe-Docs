@@ -2,7 +2,7 @@
 	<Room>
 		<name>RoomA</name>
 		<is_occupied>True</is_occupied>
-		<patients>Patient1 Patient2</patients>
+		<patients>Patient1,Patient2</patients>
 	</Room>
 	<Room>
 		<name>SanitizationRoom</name>
