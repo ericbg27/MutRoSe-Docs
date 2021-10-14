@@ -30,7 +30,7 @@
             "Description": "",
             "GoalType": "Query",
             "QueriedProperty": "world_db->select(p:Patient | p.needs_checking)",
-            "Controls": "patients_to_check : Sequence(Room)"
+            "Controls": "patients_to_check : Sequence(Patient)"
           }
         },
         {
