@@ -84,6 +84,15 @@
                     "hddl_var": "?rm"
                 }
             ]
+        },
+        {
+            "task_id": "AT8",
+            "map": [
+                {
+                    "gm_var": "current_room",
+                    "hddl_var": "?rm"
+                }
+            ]
         }
     ],
 
